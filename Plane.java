@@ -1,6 +1,14 @@
+package vehicle;
+
 public class Plane extends Vehicle {
+
     private int wing;
     private String airline;
+
+    public Plane(int wing, String airline) {
+        this.wing = wing;
+        this.airline = airline;
+    }
 
     public Plane(int numOfSeat, double fuel, double price) {
         super(numOfSeat, fuel, price);
@@ -35,9 +43,22 @@ public class Plane extends Vehicle {
 
     @Override
     public String toString() {
-        return "Plane{" +
-                "wing=" + wing +
-                ", airline='" + airline + '\'' +
-                '}';
+        return super.toString()+ "Plane{"
+                + "wing=" + wing
+                + ", airline='" + airline + '\''
+                + '}';
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Plane temp;
+        if (obj != null && obj instanceof Plane) {
+            temp = (Plane) obj;
+            if (wing == temp.wing && airline.equalsIgnoreCase(temp.airline) ) {
+                return true;
+            }
+
+        }
+        return false;
     }
 }
